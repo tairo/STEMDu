@@ -1,7 +1,7 @@
 STEMDu
 ======
 
-STEM Du - Arduino compatible educational controller
+STEM Du - Arduino compatible educational controller board
 
 
 Features
