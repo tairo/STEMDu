@@ -1,7 +1,7 @@
-STEMDu
-======
+STEMDu RDC-102
+==============
 
-STEM Du - Arduino compatible educational controller board
+STEM Du RDC-102 - Arduino compatible educational controller board
 
 
 Features
@@ -16,3 +16,12 @@ Related Works
 - The design of STEM Du is based on Sparkfun ProMicro 3.3V board https://www.sparkfun.com/products/12587.
 - STEM Du is compatible to MIT Scratch sensor board http://info.scratch.mit.edu/Sensor_Board and under Scratch Sensor Board Design License http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/ScratchBoardLicense.txt.
 - The design of STEM Du refers to NanoBoard AG http://tiisai.dip.jp/?page_id=1988 http://tiisai.dip.jp/?page_id=935.
+
+Creator
+-------
+
+
+
+Licenses
+--------
+- The board schematic is under 
