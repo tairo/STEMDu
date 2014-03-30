@@ -8,8 +8,9 @@ Features of STEM Du RDC-102
 --------
 - Arduino Leonard compatible board to be able to be used with Arduino IDE 1.0.5
 - Compatible with MIT Scratch sensor board and can be used with modified version of MIT Scratch 1.4 on Windows/MacOSX/Linux.
+- All logic circuit and I/O is 3.3V
 - Initially has DC Motor driver and can control 4 motors maximum.
-- I2C friendly design and has on board I2C LCD (optional)
+- I2C friendly design and has on board I2C LCD port (optional)
 
 Features of STEM Du ATmega328 (Nanoboard AG based)
 --------
