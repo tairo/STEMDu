@@ -1,7 +1,7 @@
 STEM Du RDC-102 / STEM Du ATmega328
 ==============
 
-STEM Du RDC-102 - Arduino compatible educational controller board
+STEM Du RDC-102 / STEM Du ATmega328 - Arduino compatible educational controller board
 
 
 Features of STEM Du RDC-102
@@ -15,6 +15,7 @@ Features of STEM Du RDC-102
 Features of STEM Du ATmega328 (Nanoboard AG based)
 --------
 - Arduino Uno/Duemillanove compatible board to be able to be used with Arduino IDE 1.0.5
+- Using Nanoboard AG PCB and minor modification (Use ATmega328, FUSE for motor circuit and external battery feature)
 - Compatible with MIT Scratch sensor board and can be used with modified version of MIT Scratch 1.4 on Windows/MacOSX/Linux.
 - Initially has DC Motor driver and can control 2 motors maximum.
 
