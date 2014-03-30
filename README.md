@@ -32,7 +32,7 @@ Related Works of ATmega328
 
 Creator
 -------
-Concept work by Tairo Nomura, Saitama Unniversity (tairo_nomura@mac.com) and STEM Education Research Center, Saitama University (http://www.stem-edulab.org/)
+Concept work by Tairo Nomura, Saitama University (tairo_nomura@mac.com) and STEM Education Research Center, Saitama University (http://www.stem-edulab.org/)
 Design by Atsushi Hasegawa, Japan Robotech Inc.(http://www.japan-robotech.com)
 Produce by Takaharu Kawano, Japan Robotech Inc.(http://www.japan-robotech.com)
 
