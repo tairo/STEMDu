@@ -1,4 +1,4 @@
-STEM Du RDC-102 / STEM Du ATmega328
+STEM Du RDC-102 / ATmega328
 ==============
 
 STEM Du RDC-102 / STEM Du ATmega328 - Arduino compatible educational controller board
