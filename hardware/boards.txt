@@ -8,7 +8,7 @@ stemdu32u4.upload.disable_flushing=true
 stemdu32u4.bootloader.low_fuses=0xff
 stemdu32u4.bootloader.high_fuses=0xd8
 stemdu32u4.bootloader.extended_fuses=0xfe
-stemdu32u4.bootloader.path=caterina
+stemdu32u4.bootloader.path=caterina-STEMDu
 stemdu32u4.bootloader.file=Caterina-stemdu8.hex
 stemdu32u4.bootloader.unlock_bits=0x3F
 stemdu32u4.bootloader.lock_bits=0x2F
@@ -41,7 +41,7 @@ atmega328i8.build.variant=eightanaloginputsandrc
 
 ##############################################################
 
-atmega8i8.name=[Optiboot] STEM Du w/ ATmega8 Int.8MHz, 8 analog, +2 digital
+atmega8i8.name=STEM Du w/ ATmega8 Int.8MHz, 8 analog, +2 digital
 atmega8i8.upload.protocol=arduino
 atmega8i8.upload.maximum_size=7680
 atmega8i8.upload.speed=115200
