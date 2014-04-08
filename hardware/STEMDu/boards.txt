@@ -15,14 +15,13 @@ STEMDu32U4.bootloader.lock_bits=0x2F
 STEMDu32U4.build.mcu=atmega32u4
 STEMDu32U4.build.f_cpu=8000000L
 STEMDu32U4.build.vid=0x16D0
-STEMDu32U4.build.pid=0x095D
+STEMDu32U4.build.pid=0x095E
 STEMDu32U4.build.core=arduino:arduino
 STEMDu32U4.build.variant=STEMDu32U4
 
 ##############################################################
 
 atmega328i8.name=STEM Du w/ ATmega328 Int.8MHz, 8 analog, +2 digital
-
 atmega328i8.upload.protocol=arduino
 atmega328i8.upload.maximum_size=30720
 atmega328i8.upload.speed=57600
@@ -33,7 +32,6 @@ atmega328i8.bootloader.path=atmega
 atmega328i8.bootloader.file=ATmegaBOOT_168_atmega328.hex
 atmega328i8.bootloader.unlock_bits=0x3F
 atmega328i8.bootloader.lock_bits=0xCF
-
 atmega328i8.build.mcu=atmega328p
 atmega328i8.build.f_cpu=8000000L
 atmega328i8.build.core=arduino
@@ -63,7 +61,6 @@ metaboard328.upload.protocol=usbasp
 metaboard328.upload.maximum_size=30720
 metaboard328.upload.speed=19200
 metaboard328.upload.disable_flushing=true
-
 metaboard328.bootloader.low_fuses=0xf7
 metaboard328.bootloader.high_fuses=0xda
 metaboard328.bootloader.extended_fuses=0×03
@@ -71,7 +68,6 @@ metaboard328.bootloader.path=metaboard
 metaboard328.bootloader.file=mega328p_16mhz.hex
 metaboard328.bootloader.unlock_bits=0×3F
 metaboard328.bootloader.lock_bits=0×2F
-
 metaboard328.build.mcu=atmega328p
 metaboard328.build.f_cpu=16000000L
 metaboard328.build.core=arduino
@@ -84,14 +80,12 @@ metaboard168.upload.protocol=usbasp
 metaboard168.upload.maximum_size=14336
 metaboard168.upload.speed=19200
 metaboard168.upload.disable_flushing=true
-
 metaboard168.bootloader.low_fuses=0xff
 metaboard168.bootloader.high_fuses=0xdd
 metaboard168.bootloader.extended_fuses=0×f8
 metaboard168.bootloader.path=metaboard
 metaboard168.bootloader.file=mega168_16mhz.hex
 metaboard168.bootloader.lock_bits=0×cf
-
 metaboard168.build.mcu=atmega168
 metaboard168.build.f_cpu=16000000L
 metaboard168.build.core=arduino
