@@ -38,7 +38,10 @@ Creator
 
 Licenses
 --------
-- The license of board schematic design is under CC 3.0 ?? (under preparation)
+- The license of board schematic design is under CC 3.0 BY-SA.
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/tairo/STEMDu" property="cc:attributionName" rel="cc:attributionURL">Tairo Nomura, Atsushi Hasegawa and Takaharu Kawano</a> 作『<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">STEM Du RDC-102</span>』は<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">クリエイティブ・コモンズ 表示 - 継承 4.0 国際 ライセンス</a>で提供されています。
+
 - The license of bootloader is same as original
 - The license of Scratch Sensor Board Design is under http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/ScratchBoardLicense.txt
 - Arduino sketch to adopt Scratch Sensor Board is originaly from HelloBoard https://sites.google.com/site/helloboardwiki/home and same license as CC 3.0 BY SA. Also refer to the sketch for NanoBoard AG made by Kazuhiro Abe (abee). 
