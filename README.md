@@ -40,7 +40,7 @@ Licenses
 --------
 - The license of board schematic design is under CC 3.0 BY-SA.
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/tairo/STEMDu" property="cc:attributionName" rel="cc:attributionURL">Tairo Nomura, Atsushi Hasegawa and Takaharu Kawano</a> 作『<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">STEM Du RDC-102</span>』は<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">クリエイティブ・コモンズ 表示 - 継承 4.0 国際 ライセンス</a>で提供されています。
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">STEM Du RDC-102</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/tairo/STEMDu" property="cc:attributionName" rel="cc:attributionURL">Tairo Nomura, Atsushi Hasegawa and Takaharu Kawano</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
 - The license of bootloader is same as original
 - The license of Scratch Sensor Board Design is under http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/ScratchBoardLicense.txt
