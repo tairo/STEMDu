@@ -38,6 +38,6 @@ Creator
 
 Licenses
 --------
-- The license of board schematic design is under CC
+- The license of board schematic design is under CC (under preparation)
 - The license of bootloader is same as original
 - The license of Scratch Sensor Board Design is under http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/ScratchBoardLicense.txt
