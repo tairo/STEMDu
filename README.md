@@ -15,7 +15,7 @@ Features of STEM Du RDC-102
 Features of STEM Du ATmega328 (Nanoboard AG based)
 --------
 - Arduino Uno/Duemillanove compatible board to be able to be used with Arduino IDE 1.0.5
-- Using Nanoboard AG PCB and minor modification (Use ATmega328, FUSE for motor circuit and external battery feature)
+- Using Nanoboard AG PCB and minor modification (Use ATmega328, minor modification for motor circuit and external battery feature)
 - Compatible with MIT Scratch sensor board and can be used with modified version of MIT Scratch 1.4 on Windows/MacOSX/Linux.
 - Initially has DC Motor driver and can control 2 motors maximum.
 
@@ -42,6 +42,6 @@ Licenses
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">STEM Du RDC-102</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/tairo/STEMDu" property="cc:attributionName" rel="cc:attributionURL">Tairo Nomura, Atsushi Hasegawa and Takaharu Kawano</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
-- The license of bootloader is same as original
+- The license of bootloader is same as Sparkfun SF32u4_boards https://github.com/sparkfun/SF32u4_boards
 - The license of Scratch Sensor Board Design is under http://info.scratch.mit.edu/sites/infoscratch.media.mit.edu/files/file/ScratchBoardLicense.txt
-- Arduino sketch to adopt Scratch Sensor Board is originaly from HelloBoard https://sites.google.com/site/helloboardwiki/home and same license as CC 3.0 BY SA. Also refer to the sketch for NanoBoard AG made by Kazuhiro Abe (abee). 
+- Arduino sketch to adopt like Scratch Sensor Board is originaly from HelloBoard https://sites.google.com/site/helloboardwiki/home and same license as CC 3.0 BY SA. Also refer to the sketch for NanoBoard AG made by Kazuhiro Abe (abee). Many thanks!
