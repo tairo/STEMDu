@@ -29,12 +29,12 @@ atmega328i8.bootloader.low_fuses=0xE2
 atmega328i8.bootloader.high_fuses=0xDA
 atmega328i8.bootloader.extended_fuses=0xFD
 atmega328i8.bootloader.path=atmega
-atmega328i8.bootloader.file=ATmegaBOOT_168_atmega328.hex
+atmega328i8.bootloader.file=ATmegaBOOT_168_atmega328_pro_8MHz.hex
 atmega328i8.bootloader.unlock_bits=0x3F
 atmega328i8.bootloader.lock_bits=0xCF
 atmega328i8.build.mcu=atmega328p
 atmega328i8.build.f_cpu=8000000L
-atmega328i8.build.core=arduino
+atmega328i8.build.core=arduino:arduino
 atmega328i8.build.variant=eightanaloginputsandrc
 
 ##############################################################
@@ -51,7 +51,7 @@ atmega8i8.bootloader.unlock_bits=0x3F
 atmega8i8.bootloader.lock_bits=0x0F
 atmega8i8.build.mcu=atmega8
 atmega8i8.build.f_cpu=8000000L
-atmega8i8.build.core=arduino
+atmega8i8.build.core=arduino:arduino
 atmega8i8.build.variant=eightanaloginputsandrc
 
 ##############################################################
@@ -70,7 +70,7 @@ metaboard328.bootloader.unlock_bits=0x3F
 metaboard328.bootloader.lock_bits=0x2F
 metaboard328.build.mcu=atmega328p
 metaboard328.build.f_cpu=16000000L
-metaboard328.build.core=arduino
+metaboard328.build.core=arduino:arduino
 metaboard328.build.variant=standard
 
 ##############################################################
@@ -88,5 +88,5 @@ metaboard168.bootloader.file=mega168_16mhz.hex
 metaboard168.bootloader.lock_bits=0xcf
 metaboard168.build.mcu=atmega168
 metaboard168.build.f_cpu=16000000L
-metaboard168.build.core=arduino
+metaboard168.build.core=arduino:arduino
 metaboard168.build.variant=standard
