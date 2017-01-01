@@ -1,9 +1,7 @@
 STEM Du - Educational Microcontroller System for STEM-Robotics Education(TM)
-RDC-102, RDC-103 / General ATmega328 based Arduino compatible board
 ==============
 
-STEM Du RDC-102 / STEM Du ATmega328 - Arduino compatible educational controller board
-
+STEM Du RDC-102, RDC-103 is one of the Arduino compatible microcontroller board suite for STEM-Robotics education. "STEM Du" is also the name of the concept for our new educational methodorogy. 
 
 Features of STEM Du RDC-102, RDC-103
 --------
