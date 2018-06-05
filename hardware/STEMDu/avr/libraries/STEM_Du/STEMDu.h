@@ -45,11 +45,12 @@
 #if STEMDU >= RDC_104
 
 #define HAS_I2C_LCD 4
+#define HAS_MPU6050 8
 
 #else
 
 #define HAS_SPI_LCD 7
-#define HAS_MPU6050  8
+#define HAS_MPU6050 8
 
 #endif // STEMDU >= RDC_104
 #endif // STEMDU <= RDC_102_R3

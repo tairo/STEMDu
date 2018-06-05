@@ -4,10 +4,10 @@
 #include "WProgram.h"
 #endif
 
-#include "STEMDu.h"
+#include <STEMDu.h>
 
 STEMDu::STEMDu(){
-	this->init();
+	//this->init();
 }
 
 void STEMDu::init(){
@@ -47,6 +47,7 @@ void STEMDu::init(){
     Wire.begin();
     accelgyro.initialize();
 #endif
+
 }
 
 void STEMDu::motor(int n, int speed){

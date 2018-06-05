@@ -300,4 +300,6 @@ const uint8_t PROGMEM analog_pin_to_channel_PGM[12] = {
 #define STEMDU 1034
 #endif
 
+#define LED_BUILTIN 13
+
 #endif /* Pins_Arduino_h */
