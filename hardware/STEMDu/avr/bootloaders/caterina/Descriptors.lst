@@ -1,0 +1,580 @@
+   1               		.file	"Descriptors.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.CALLBACK_USB_GetDescriptor,"ax",@progbits
+  11               	.global	CALLBACK_USB_GetDescriptor
+  13               	CALLBACK_USB_GetDescriptor:
+  14               	.LVL0:
+  15               	.LFB94:
+  16               		.file 1 "Descriptors.c"
+   1:Descriptors.c **** /*
+   2:Descriptors.c ****              LUFA Library
+   3:Descriptors.c ****      Copyright (C) Dean Camera, 2011.
+   4:Descriptors.c **** 
+   5:Descriptors.c ****   dean [at] fourwalledcubicle [dot] com
+   6:Descriptors.c ****            www.lufa-lib.org
+   7:Descriptors.c **** */
+   8:Descriptors.c **** 
+   9:Descriptors.c **** /*
+  10:Descriptors.c ****   Copyright 2011  Dean Camera (dean [at] fourwalledcubicle [dot] com)
+  11:Descriptors.c **** 
+  12:Descriptors.c ****   Permission to use, copy, modify, distribute, and sell this
+  13:Descriptors.c ****   software and its documentation for any purpose is hereby granted
+  14:Descriptors.c ****   without fee, provided that the above copyright notice appear in
+  15:Descriptors.c ****   all copies and that both that the copyright notice and this
+  16:Descriptors.c ****   permission notice and warranty disclaimer appear in supporting
+  17:Descriptors.c ****   documentation, and that the name of the author not be used in
+  18:Descriptors.c ****   advertising or publicity pertaining to distribution of the
+  19:Descriptors.c ****   software without specific, written prior permission.
+  20:Descriptors.c **** 
+  21:Descriptors.c ****   The author disclaim all warranties with regard to this
+  22:Descriptors.c ****   software, including all implied warranties of merchantability
+  23:Descriptors.c ****   and fitness.  In no event shall the author be liable for any
+  24:Descriptors.c ****   special, indirect or consequential damages or any damages
+  25:Descriptors.c ****   whatsoever resulting from loss of use, data or profits, whether
+  26:Descriptors.c ****   in an action of contract, negligence or other tortious action,
+  27:Descriptors.c ****   arising out of or in connection with the use or performance of
+  28:Descriptors.c ****   this software.
+  29:Descriptors.c **** */
+  30:Descriptors.c **** 
+  31:Descriptors.c **** /** \file
+  32:Descriptors.c ****  *
+  33:Descriptors.c ****  *  USB Device Descriptors, for library use when in USB device mode. Descriptors are special
+  34:Descriptors.c ****  *  computer-readable structures which the host requests upon device enumeration, to determine
+  35:Descriptors.c ****  *  the device's capabilities and functions.
+  36:Descriptors.c ****  */
+  37:Descriptors.c **** 
+  38:Descriptors.c **** #include "Descriptors.h"
+  39:Descriptors.c **** 
+  40:Descriptors.c **** /** Device descriptor structure. This descriptor, located in SRAM memory, describes the overall
+  41:Descriptors.c ****  *  device characteristics, including the supported USB version, control endpoint size and the
+  42:Descriptors.c ****  *  number of device configurations. The descriptor is read out by the USB host when the enumeratio
+  43:Descriptors.c ****  *  process begins.
+  44:Descriptors.c ****  */
+  45:Descriptors.c **** const USB_Descriptor_Device_t DeviceDescriptor =
+  46:Descriptors.c **** {
+  47:Descriptors.c **** 	.Header                 = {.Size = sizeof(USB_Descriptor_Device_t), .Type = DTYPE_Device},
+  48:Descriptors.c **** 
+  49:Descriptors.c **** 	.USBSpecification       = VERSION_BCD(01.10),
+  50:Descriptors.c **** 	.Class                  = CDC_CSCP_CDCClass,
+  51:Descriptors.c **** 	.SubClass               = CDC_CSCP_NoSpecificSubclass,
+  52:Descriptors.c **** 	.Protocol               = CDC_CSCP_NoSpecificProtocol,
+  53:Descriptors.c **** 
+  54:Descriptors.c **** 	.Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,
+  55:Descriptors.c **** 
+  56:Descriptors.c **** 	.VendorID               = DEVICE_VID,
+  57:Descriptors.c **** 	.ProductID              = DEVICE_PID,
+  58:Descriptors.c **** 	.ReleaseNumber          = VERSION_BCD(00.01),
+  59:Descriptors.c **** 
+  60:Descriptors.c **** 	.ManufacturerStrIndex   = 0x02,
+  61:Descriptors.c **** 	.ProductStrIndex        = 0x01,
+  62:Descriptors.c **** 	.SerialNumStrIndex      = NO_DESCRIPTOR,
+  63:Descriptors.c **** 
+  64:Descriptors.c **** 	.NumberOfConfigurations = FIXED_NUM_CONFIGURATIONS
+  65:Descriptors.c **** };
+  66:Descriptors.c **** 
+  67:Descriptors.c **** /** Configuration descriptor structure. This descriptor, located in SRAM memory, describes the usag
+  68:Descriptors.c ****  *  of the device in one of its supported configurations, including information about any device in
+  69:Descriptors.c ****  *  and endpoints. The descriptor is read out by the USB host during the enumeration process when s
+  70:Descriptors.c ****  *  a configuration so that the host may correctly communicate with the USB device.
+  71:Descriptors.c ****  */
+  72:Descriptors.c **** const USB_Descriptor_Configuration_t ConfigurationDescriptor =
+  73:Descriptors.c **** {
+  74:Descriptors.c **** 	.Config =
+  75:Descriptors.c **** 		{
+  76:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Configuration_Header_t), .Type = DTYPE_
+  77:Descriptors.c **** 
+  78:Descriptors.c **** 			.TotalConfigurationSize = sizeof(USB_Descriptor_Configuration_t),
+  79:Descriptors.c **** 			.TotalInterfaces        = 2,
+  80:Descriptors.c **** 
+  81:Descriptors.c **** 			.ConfigurationNumber    = 1,
+  82:Descriptors.c **** 			.ConfigurationStrIndex  = NO_DESCRIPTOR,
+  83:Descriptors.c **** 
+  84:Descriptors.c **** 			.ConfigAttributes       = USB_CONFIG_ATTR_BUSPOWERED,
+  85:Descriptors.c **** 
+  86:Descriptors.c **** 			.MaxPowerConsumption    = USB_CONFIG_POWER_MA(100)
+  87:Descriptors.c **** 		},
+  88:Descriptors.c **** 
+  89:Descriptors.c **** 	.CDC_CCI_Interface =
+  90:Descriptors.c **** 		{
+  91:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
+  92:Descriptors.c **** 
+  93:Descriptors.c **** 			.InterfaceNumber        = 0,
+  94:Descriptors.c **** 			.AlternateSetting       = 0,
+  95:Descriptors.c **** 
+  96:Descriptors.c **** 			.TotalEndpoints         = 1,
+  97:Descriptors.c **** 
+  98:Descriptors.c **** 			.Class                  = CDC_CSCP_CDCClass,
+  99:Descriptors.c **** 			.SubClass               = CDC_CSCP_ACMSubclass,
+ 100:Descriptors.c **** 			.Protocol               = CDC_CSCP_ATCommandProtocol,
+ 101:Descriptors.c **** 
+ 102:Descriptors.c **** 			.InterfaceStrIndex      = NO_DESCRIPTOR
+ 103:Descriptors.c **** 		},
+ 104:Descriptors.c **** 
+ 105:Descriptors.c **** 	.CDC_Functional_Header =
+ 106:Descriptors.c **** 		{
+ 107:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalHeader_t), .Type = DTYPE_
+ 108:Descriptors.c **** 			.Subtype                = 0x00,
+ 109:Descriptors.c **** 
+ 110:Descriptors.c **** 			.CDCSpecification       = VERSION_BCD(01.10),
+ 111:Descriptors.c **** 		},
+ 112:Descriptors.c **** 
+ 113:Descriptors.c **** 	.CDC_Functional_ACM =
+ 114:Descriptors.c **** 		{
+ 115:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalACM_t), .Type = DTYPE_CSI
+ 116:Descriptors.c **** 			.Subtype                = 0x02,
+ 117:Descriptors.c **** 
+ 118:Descriptors.c **** 			.Capabilities           = 0x04,
+ 119:Descriptors.c **** 		},
+ 120:Descriptors.c **** 
+ 121:Descriptors.c **** 	.CDC_Functional_Union =
+ 122:Descriptors.c **** 		{
+ 123:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_CDC_Descriptor_FunctionalUnion_t), .Type = DTYPE_C
+ 124:Descriptors.c **** 			.Subtype                = 0x06,
+ 125:Descriptors.c **** 
+ 126:Descriptors.c **** 			.MasterInterfaceNumber  = 0,
+ 127:Descriptors.c **** 			.SlaveInterfaceNumber   = 1,
+ 128:Descriptors.c **** 		},
+ 129:Descriptors.c **** 
+ 130:Descriptors.c **** 	.CDC_NotificationEndpoint =
+ 131:Descriptors.c **** 		{
+ 132:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
+ 133:Descriptors.c **** 
+ 134:Descriptors.c **** 			.EndpointAddress        = (ENDPOINT_DIR_IN | CDC_NOTIFICATION_EPNUM),
+ 135:Descriptors.c **** 			.Attributes             = (EP_TYPE_INTERRUPT | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+ 136:Descriptors.c **** 			.EndpointSize           = CDC_NOTIFICATION_EPSIZE,
+ 137:Descriptors.c **** 			.PollingIntervalMS      = 0xFF
+ 138:Descriptors.c **** 		},
+ 139:Descriptors.c **** 
+ 140:Descriptors.c **** 	.CDC_DCI_Interface =
+ 141:Descriptors.c **** 		{
+ 142:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
+ 143:Descriptors.c **** 
+ 144:Descriptors.c **** 			.InterfaceNumber        = 1,
+ 145:Descriptors.c **** 			.AlternateSetting       = 0,
+ 146:Descriptors.c **** 
+ 147:Descriptors.c **** 			.TotalEndpoints         = 2,
+ 148:Descriptors.c **** 
+ 149:Descriptors.c **** 			.Class                  = CDC_CSCP_CDCDataClass,
+ 150:Descriptors.c **** 			.SubClass               = CDC_CSCP_NoDataSubclass,
+ 151:Descriptors.c **** 			.Protocol               = CDC_CSCP_NoDataProtocol,
+ 152:Descriptors.c **** 
+ 153:Descriptors.c **** 			.InterfaceStrIndex      = NO_DESCRIPTOR
+ 154:Descriptors.c **** 		},
+ 155:Descriptors.c **** 
+ 156:Descriptors.c **** 	.CDC_DataOutEndpoint =
+ 157:Descriptors.c **** 		{
+ 158:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
+ 159:Descriptors.c **** 
+ 160:Descriptors.c **** 			.EndpointAddress        = (ENDPOINT_DIR_OUT | CDC_RX_EPNUM),
+ 161:Descriptors.c **** 			.Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+ 162:Descriptors.c **** 			.EndpointSize           = CDC_TXRX_EPSIZE,
+ 163:Descriptors.c **** 			.PollingIntervalMS      = 0x01
+ 164:Descriptors.c **** 		},
+ 165:Descriptors.c **** 
+ 166:Descriptors.c **** 	.CDC_DataInEndpoint =
+ 167:Descriptors.c **** 		{
+ 168:Descriptors.c **** 			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
+ 169:Descriptors.c **** 
+ 170:Descriptors.c **** 			.EndpointAddress        = (ENDPOINT_DIR_IN | CDC_TX_EPNUM),
+ 171:Descriptors.c **** 			.Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+ 172:Descriptors.c **** 			.EndpointSize           = CDC_TXRX_EPSIZE,
+ 173:Descriptors.c **** 			.PollingIntervalMS      = 0x01
+ 174:Descriptors.c **** 		}
+ 175:Descriptors.c **** };
+ 176:Descriptors.c **** 
+ 177:Descriptors.c **** /** Language descriptor structure. This descriptor, located in SRAM memory, is returned when the ho
+ 178:Descriptors.c ****  *  the string descriptor with index 0 (the first index). It is actually an array of 16-bit integer
+ 179:Descriptors.c ****  *  via the language ID table available at USB.org what languages the device supports for its strin
+ 180:Descriptors.c ****  */
+ 181:Descriptors.c **** const USB_Descriptor_String_t LanguageString =
+ 182:Descriptors.c **** {
+ 183:Descriptors.c **** 	.Header                 = {.Size = USB_STRING_LEN(1), .Type = DTYPE_String},
+ 184:Descriptors.c **** 
+ 185:Descriptors.c **** 	.UnicodeString          = {LANGUAGE_ID_ENG}
+ 186:Descriptors.c **** };
+ 187:Descriptors.c **** 
+ 188:Descriptors.c **** /** Product descriptor string. This is a Unicode string containing the product's details in human r
+ 189:Descriptors.c ****  *  and is read out upon request by the host when the appropriate string ID is requested, listed in
+ 190:Descriptors.c ****  *  Descriptor.
+ 191:Descriptors.c ****  */
+ 192:Descriptors.c **** const USB_Descriptor_String_t ProductString =
+ 193:Descriptors.c **** {
+ 194:Descriptors.c **** 	.Header                 = {.Size = USB_STRING_LEN(14), .Type = DTYPE_String},
+ 195:Descriptors.c **** 
+ 196:Descriptors.c **** 	#if DEVICE_PID == 0x9209
+ 197:Descriptors.c **** 	.UnicodeString          = L"WiFlyin'      "
+ 198:Descriptors.c **** 	#elif DEVICE_PID == 0x9207
+ 199:Descriptors.c **** 	.UnicodeString          = L"LilyPadUSB    " 
+ 200:Descriptors.c **** 	#elif DEVICE_PID == 0x9205
+ 201:Descriptors.c **** 	.UnicodeString          = L"Pro Micro 5V  " 
+ 202:Descriptors.c **** 	#elif DEVICE_PID == 0x9203
+ 203:Descriptors.c **** 	.UnicodeString			= L"Pro Micro 3.3V"
+ 204:Descriptors.c **** 	#elif DEVICE_PID == 0x2B74
+ 205:Descriptors.c **** 	.UnicodeString			= L"MaKey MaKey   "
+ 206:Descriptors.c **** 	#elif DEVICE_PID == 0x095D
+ 207:Descriptors.c **** 	.UnicodeString			= L"STEM Du RDC102"
+ 208:Descriptors.c **** 	#else
+ 209:Descriptors.c **** 	.UnicodeString			= L"USB IO board  "
+ 210:Descriptors.c **** 	#endif
+ 211:Descriptors.c **** };
+ 212:Descriptors.c **** 
+ 213:Descriptors.c **** const USB_Descriptor_String_t ManufNameString = 
+ 214:Descriptors.c **** {
+ 215:Descriptors.c **** 	.Header					= {.Size = USB_STRING_LEN(20), .Type = DTYPE_String},
+ 216:Descriptors.c **** 	
+ 217:Descriptors.c **** 	#if DEVICE_VID == 0x1B4F
+ 218:Descriptors.c **** 	.UnicodeString			= L"SparkFun Electronics"
+ 219:Descriptors.c **** 	#elif DEVICE_VID == 0x16D0
+ 220:Descriptors.c **** 	.UnicodeString			= L"MCS Electronics     "
+ 221:Descriptors.c **** 	#else
+ 222:Descriptors.c **** 	.UnicodeString			= L"Unknown             "
+ 223:Descriptors.c **** 	#endif
+ 224:Descriptors.c **** };
+ 225:Descriptors.c **** 
+ 226:Descriptors.c **** /** This function is called by the library when in device mode, and must be overridden (see LUFA li
+ 227:Descriptors.c ****  *  documentation) by the application code so that the address and size of a requested descriptor c
+ 228:Descriptors.c ****  *  to the USB library. When the device receives a Get Descriptor request on the control endpoint, 
+ 229:Descriptors.c ****  *  is called so that the descriptor details can be passed back and the appropriate descriptor sent
+ 230:Descriptors.c ****  *  USB host.
+ 231:Descriptors.c ****  */
+ 232:Descriptors.c **** uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
+ 233:Descriptors.c ****                                     const uint8_t wIndex,
+ 234:Descriptors.c ****                                     const void** const DescriptorAddress)
+ 235:Descriptors.c **** {
+  17               		.loc 1 235 1 view -0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  23               		.loc 1 235 1 is_stmt 0 view .LVU1
+  24 0000 FA01      		movw r30,r20
+ 236:Descriptors.c **** 	const uint8_t  DescriptorType   = (wValue >> 8);
+  25               		.loc 1 236 2 is_stmt 1 view .LVU2
+  26               		.loc 1 236 44 is_stmt 0 view .LVU3
+  27 0002 292F      		mov r18,r25
+  28 0004 30E0      		ldi r19,0
+  29               	.LVL1:
+ 237:Descriptors.c **** 	const uint8_t  DescriptorNumber = (wValue & 0xFF);
+  30               		.loc 1 237 2 is_stmt 1 view .LVU4
+ 238:Descriptors.c **** 
+ 239:Descriptors.c **** 	const void* Address = NULL;
+  31               		.loc 1 239 2 view .LVU5
+ 240:Descriptors.c **** 	uint16_t    Size    = NO_DESCRIPTOR;
+  32               		.loc 1 240 2 view .LVU6
+ 241:Descriptors.c **** 
+ 242:Descriptors.c **** 	switch (DescriptorType)
+  33               		.loc 1 242 2 view .LVU7
+  34 0006 2230      		cpi r18,2
+  35 0008 3105      		cpc r19,__zero_reg__
+  36 000a 01F0      		breq .L4
+  37 000c 2330      		cpi r18,3
+  38 000e 3105      		cpc r19,__zero_reg__
+  39 0010 01F0      		breq .L3
+  40 0012 2130      		cpi r18,1
+  41 0014 3105      		cpc r19,__zero_reg__
+  42 0016 01F4      		brne .L8
+  43 0018 82E1      		ldi r24,lo8(18)
+  44 001a 90E0      		ldi r25,0
+  45               	.LVL2:
+  46               		.loc 1 242 2 is_stmt 0 view .LVU8
+  47 001c 20E0      		ldi r18,lo8(DeviceDescriptor)
+  48 001e 30E0      		ldi r19,hi8(DeviceDescriptor)
+  49               	.LVL3:
+  50               	.L2:
+ 243:Descriptors.c **** 	{
+ 244:Descriptors.c **** 		case DTYPE_Device:
+ 245:Descriptors.c **** 			Address = &DeviceDescriptor;
+ 246:Descriptors.c **** 			Size    = sizeof(USB_Descriptor_Device_t);
+ 247:Descriptors.c **** 			break;
+ 248:Descriptors.c **** 		case DTYPE_Configuration:
+ 249:Descriptors.c **** 			Address = &ConfigurationDescriptor;
+ 250:Descriptors.c **** 			Size    = sizeof(USB_Descriptor_Configuration_t);
+ 251:Descriptors.c **** 			break;
+ 252:Descriptors.c **** 		case DTYPE_String:
+ 253:Descriptors.c **** 			if (!(DescriptorNumber))
+ 254:Descriptors.c **** 			{
+ 255:Descriptors.c **** 				Address = &LanguageString;
+ 256:Descriptors.c **** 				Size    = LanguageString.Header.Size;
+ 257:Descriptors.c **** 			}
+ 258:Descriptors.c **** 			else if (DescriptorNumber == DeviceDescriptor.ProductStrIndex) 
+ 259:Descriptors.c **** 			{
+ 260:Descriptors.c **** 				Address = &ProductString;
+ 261:Descriptors.c **** 				Size    = ProductString.Header.Size;
+ 262:Descriptors.c **** 			} else if (DescriptorNumber == DeviceDescriptor.ManufacturerStrIndex)
+ 263:Descriptors.c **** 			{
+ 264:Descriptors.c **** 				Address = &ManufNameString;
+ 265:Descriptors.c **** 				Size	= ManufNameString.Header.Size;
+ 266:Descriptors.c **** 			}
+ 267:Descriptors.c **** 
+ 268:Descriptors.c **** 			break;
+ 269:Descriptors.c **** 	}
+ 270:Descriptors.c **** 
+ 271:Descriptors.c **** 	*DescriptorAddress = Address;
+  51               		.loc 1 271 2 is_stmt 1 view .LVU9
+  52               		.loc 1 271 21 is_stmt 0 view .LVU10
+  53 0020 3183      		std Z+1,r19
+  54 0022 2083      		st Z,r18
+ 272:Descriptors.c **** 	return Size;
+  55               		.loc 1 272 2 is_stmt 1 view .LVU11
+  56               	/* epilogue start */
+ 273:Descriptors.c **** }
+  57               		.loc 1 273 1 is_stmt 0 view .LVU12
+  58 0024 0895      		ret
+  59               	.LVL4:
+  60               	.L3:
+ 253:Descriptors.c **** 			{
+  61               		.loc 1 253 4 is_stmt 1 view .LVU13
+ 253:Descriptors.c **** 			{
+  62               		.loc 1 253 7 is_stmt 0 view .LVU14
+  63 0026 8823      		tst r24
+  64 0028 01F0      		breq .L6
+ 258:Descriptors.c **** 			{
+  65               		.loc 1 258 9 is_stmt 1 view .LVU15
+ 258:Descriptors.c **** 			{
+  66               		.loc 1 258 12 is_stmt 0 view .LVU16
+  67 002a 8130      		cpi r24,lo8(1)
+  68 002c 01F0      		breq .L7
+ 262:Descriptors.c **** 			{
+  69               		.loc 1 262 11 is_stmt 1 view .LVU17
+ 262:Descriptors.c **** 			{
+  70               		.loc 1 262 14 is_stmt 0 view .LVU18
+  71 002e 8230      		cpi r24,lo8(2)
+  72 0030 01F4      		brne .L8
+ 265:Descriptors.c **** 			}
+  73               		.loc 1 265 10 view .LVU19
+  74 0032 8AE2      		ldi r24,lo8(42)
+  75 0034 90E0      		ldi r25,0
+  76               	.LVL5:
+ 264:Descriptors.c **** 				Size	= ManufNameString.Header.Size;
+  77               		.loc 1 264 13 view .LVU20
+  78 0036 20E0      		ldi r18,lo8(ManufNameString)
+  79 0038 30E0      		ldi r19,hi8(ManufNameString)
+  80               	.LVL6:
+ 264:Descriptors.c **** 				Size	= ManufNameString.Header.Size;
+  81               		.loc 1 264 13 view .LVU21
+  82 003a 00C0      		rjmp .L2
+  83               	.LVL7:
+  84               	.L4:
+ 250:Descriptors.c **** 			break;
+  85               		.loc 1 250 12 view .LVU22
+  86 003c 8EE3      		ldi r24,lo8(62)
+  87 003e 90E0      		ldi r25,0
+  88               	.LVL8:
+ 249:Descriptors.c **** 			Size    = sizeof(USB_Descriptor_Configuration_t);
+  89               		.loc 1 249 12 view .LVU23
+  90 0040 20E0      		ldi r18,lo8(ConfigurationDescriptor)
+  91 0042 30E0      		ldi r19,hi8(ConfigurationDescriptor)
+  92               	.LVL9:
+ 249:Descriptors.c **** 			Size    = sizeof(USB_Descriptor_Configuration_t);
+  93               		.loc 1 249 12 view .LVU24
+  94 0044 00C0      		rjmp .L2
+  95               	.LVL10:
+  96               	.L6:
+ 256:Descriptors.c **** 			}
+  97               		.loc 1 256 13 view .LVU25
+  98 0046 84E0      		ldi r24,lo8(4)
+  99 0048 90E0      		ldi r25,0
+ 100               	.LVL11:
+ 255:Descriptors.c **** 				Size    = LanguageString.Header.Size;
+ 101               		.loc 1 255 13 view .LVU26
+ 102 004a 20E0      		ldi r18,lo8(LanguageString)
+ 103 004c 30E0      		ldi r19,hi8(LanguageString)
+ 104               	.LVL12:
+ 255:Descriptors.c **** 				Size    = LanguageString.Header.Size;
+ 105               		.loc 1 255 13 view .LVU27
+ 106 004e 00C0      		rjmp .L2
+ 107               	.LVL13:
+ 108               	.L7:
+ 261:Descriptors.c **** 			} else if (DescriptorNumber == DeviceDescriptor.ManufacturerStrIndex)
+ 109               		.loc 1 261 13 view .LVU28
+ 110 0050 8EE1      		ldi r24,lo8(30)
+ 111 0052 90E0      		ldi r25,0
+ 112               	.LVL14:
+ 260:Descriptors.c **** 				Size    = ProductString.Header.Size;
+ 113               		.loc 1 260 13 view .LVU29
+ 114 0054 20E0      		ldi r18,lo8(ProductString)
+ 115 0056 30E0      		ldi r19,hi8(ProductString)
+ 116               	.LVL15:
+ 260:Descriptors.c **** 				Size    = ProductString.Header.Size;
+ 117               		.loc 1 260 13 view .LVU30
+ 118 0058 00C0      		rjmp .L2
+ 119               	.LVL16:
+ 120               	.L8:
+ 240:Descriptors.c **** 
+ 121               		.loc 1 240 14 view .LVU31
+ 122 005a 90E0      		ldi r25,0
+ 123 005c 80E0      		ldi r24,0
+ 124               	.LVL17:
+ 239:Descriptors.c **** 	uint16_t    Size    = NO_DESCRIPTOR;
+ 125               		.loc 1 239 14 view .LVU32
+ 126 005e 30E0      		ldi r19,0
+ 127 0060 20E0      		ldi r18,0
+ 128               	.LVL18:
+ 239:Descriptors.c **** 	uint16_t    Size    = NO_DESCRIPTOR;
+ 129               		.loc 1 239 14 view .LVU33
+ 130 0062 00C0      		rjmp .L2
+ 131               		.cfi_endproc
+ 132               	.LFE94:
+ 134               	.global	ManufNameString
+ 135               		.section	.rodata
+ 138               	ManufNameString:
+ 139 0000 2A        		.byte	42
+ 140 0001 03        		.byte	3
+ 141 0002 4D00      		.string	"M"
+ 142 0004 4300      		.string	"C"
+ 143 0006 5300      		.string	"S"
+ 144 0008 2000      		.string	" "
+ 145 000a 4500      		.string	"E"
+ 146 000c 6C00      		.string	"l"
+ 147 000e 6500      		.string	"e"
+ 148 0010 6300      		.string	"c"
+ 149 0012 7400      		.string	"t"
+ 150 0014 7200      		.string	"r"
+ 151 0016 6F00      		.string	"o"
+ 152 0018 6E00      		.string	"n"
+ 153 001a 6900      		.string	"i"
+ 154 001c 6300      		.string	"c"
+ 155 001e 7300      		.string	"s"
+ 156 0020 2000      		.string	" "
+ 157 0022 2000      		.string	" "
+ 158 0024 2000      		.string	" "
+ 159 0026 2000      		.string	" "
+ 160 0028 2000      		.string	" "
+ 161 002a 00        		.string	""
+ 162 002b 00        		.string	""
+ 163               	.global	ProductString
+ 166               	ProductString:
+ 167 002c 1E        		.byte	30
+ 168 002d 03        		.byte	3
+ 169 002e 5300      		.string	"S"
+ 170 0030 5400      		.string	"T"
+ 171 0032 4500      		.string	"E"
+ 172 0034 4D00      		.string	"M"
+ 173 0036 2000      		.string	" "
+ 174 0038 4400      		.string	"D"
+ 175 003a 7500      		.string	"u"
+ 176 003c 2000      		.string	" "
+ 177 003e 5200      		.string	"R"
+ 178 0040 4400      		.string	"D"
+ 179 0042 4300      		.string	"C"
+ 180 0044 3100      		.string	"1"
+ 181 0046 3000      		.string	"0"
+ 182 0048 3200      		.string	"2"
+ 183 004a 00        		.string	""
+ 184 004b 00        		.string	""
+ 185               	.global	LanguageString
+ 188               	LanguageString:
+ 189 004c 04        		.byte	4
+ 190 004d 03        		.byte	3
+ 191 004e 0904      		.word	1033
+ 192               	.global	ConfigurationDescriptor
+ 195               	ConfigurationDescriptor:
+ 196 0050 09        		.byte	9
+ 197 0051 02        		.byte	2
+ 198 0052 3E00      		.word	62
+ 199 0054 02        		.byte	2
+ 200 0055 01        		.byte	1
+ 201 0056 00        		.byte	0
+ 202 0057 80        		.byte	-128
+ 203 0058 32        		.byte	50
+ 204 0059 09        		.byte	9
+ 205 005a 04        		.byte	4
+ 206 005b 00        		.byte	0
+ 207 005c 00        		.byte	0
+ 208 005d 01        		.byte	1
+ 209 005e 02        		.byte	2
+ 210 005f 02        		.byte	2
+ 211 0060 01        		.byte	1
+ 212 0061 00        		.byte	0
+ 213 0062 05        		.byte	5
+ 214 0063 24        		.byte	36
+ 215 0064 00        		.byte	0
+ 216 0065 1001      		.word	272
+ 217 0067 04        		.byte	4
+ 218 0068 24        		.byte	36
+ 219 0069 02        		.byte	2
+ 220 006a 04        		.byte	4
+ 221 006b 05        		.byte	5
+ 222 006c 24        		.byte	36
+ 223 006d 06        		.byte	6
+ 224 006e 00        		.byte	0
+ 225 006f 01        		.byte	1
+ 226 0070 07        		.byte	7
+ 227 0071 05        		.byte	5
+ 228 0072 82        		.byte	-126
+ 229 0073 03        		.byte	3
+ 230 0074 0800      		.word	8
+ 231 0076 FF        		.byte	-1
+ 232 0077 09        		.byte	9
+ 233 0078 04        		.byte	4
+ 234 0079 01        		.byte	1
+ 235 007a 00        		.byte	0
+ 236 007b 02        		.byte	2
+ 237 007c 0A        		.byte	10
+ 238 007d 00        		.byte	0
+ 239 007e 00        		.byte	0
+ 240 007f 00        		.byte	0
+ 241 0080 07        		.byte	7
+ 242 0081 05        		.byte	5
+ 243 0082 04        		.byte	4
+ 244 0083 02        		.byte	2
+ 245 0084 1000      		.word	16
+ 246 0086 01        		.byte	1
+ 247 0087 07        		.byte	7
+ 248 0088 05        		.byte	5
+ 249 0089 83        		.byte	-125
+ 250 008a 02        		.byte	2
+ 251 008b 1000      		.word	16
+ 252 008d 01        		.byte	1
+ 253               	.global	DeviceDescriptor
+ 256               	DeviceDescriptor:
+ 257 008e 12        		.byte	18
+ 258 008f 01        		.byte	1
+ 259 0090 1001      		.word	272
+ 260 0092 02        		.byte	2
+ 261 0093 00        		.byte	0
+ 262 0094 00        		.byte	0
+ 263 0095 08        		.byte	8
+ 264 0096 D016      		.word	5840
+ 265 0098 5D09      		.word	2397
+ 266 009a 0100      		.word	1
+ 267 009c 02        		.byte	2
+ 268 009d 01        		.byte	1
+ 269 009e 00        		.byte	0
+ 270 009f 01        		.byte	1
+ 271               		.text
+ 272               	.Letext0:
+ 273               		.file 2 "/usr/local/Cellar/avr-gcc/9.2.0/avr/include/stdint.h"
+ 274               		.file 3 "/usr/local/Cellar/avr-gcc/9.2.0/lib/avr-gcc/9/gcc/avr/9.2.0/include/stddef.h"
+ 275               		.file 4 "LUFA-111009/LUFA/Drivers/USB/Core/AVR8/../StdDescriptors.h"
+ 276               		.file 5 "LUFA-111009/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 277               		.file 6 "LUFA-111009/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 278               		.file 7 "LUFA-111009/LUFA/Drivers/USB/Core/USBTask.h"
+ 279               		.file 8 "LUFA-111009/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 280               		.file 9 "LUFA-111009/LUFA/Drivers/USB/Class/Device/../Common/CDC.h"
+ 281               		.file 10 "/usr/local/Cellar/avr-gcc/9.2.0/avr/include/stdio.h"
+ 282               		.file 11 "Descriptors.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 Descriptors.c
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:5      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:6      *ABS*:0000000000000001 __zero_reg__
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:13     .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:256    .rodata:000000000000008e DeviceDescriptor
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:138    .rodata:0000000000000000 ManufNameString
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:195    .rodata:0000000000000050 ConfigurationDescriptor
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:188    .rodata:000000000000004c LanguageString
+/var/folders/1r/2knlpf_s0bv5lv_p4sv8fzmh0000gn/T//ccvIP7iV.s:166    .rodata:000000000000002c ProductString
+
+UNDEFINED SYMBOLS
+__do_copy_data
